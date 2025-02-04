@@ -4,18 +4,14 @@ const {
 
 
 async function getAllUsersController(req,res) {
-
     try {
-
         const users = await getAllUsers();
-
-        res.status(200).json(users);
+        return res.status(200).json(users);
         
     } catch (error) {
         console.error(error)
         return res.status(500).json(error);
     }
-    
 }
 
 async function getUserByIdController(req,res) {
@@ -34,12 +30,12 @@ async function getUserByIdController(req,res) {
 
 async function createUserController(req,res) {
     try {
+        console.log("controller")
         const {name,email} = req.body;
+       
         const newUser = await createUser({name,email});
-        if (!name || !email) {
-            return res.status(400).json({messege:"name and email are required"})
-        }
-        res.status(201).json(newUser);
+        
+        return res.status(201).json(newUser);
     } catch (error) {
         console.error(error)
         return res.status(500).json(error);

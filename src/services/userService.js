@@ -33,7 +33,6 @@ async function UpdateUser(id,data) {
 }
 
 async function deleteUser(id) {
-
     const userIndex = users.findIndex(user=>user.id === +id)
     if (userIndex === -1) {
         return null
